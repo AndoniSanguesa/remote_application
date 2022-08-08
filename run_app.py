@@ -173,7 +173,10 @@ while True:
         time.sleep(1)
         conn.close()
     except Exception as e:
-        send_confirm_packet(1, str(e), current_conn)
-        time.sleep(1)
-        current_conn.close()
+        try:
+            send_confirm_packet(1, str(e), current_conn)
+            time.sleep(1)
+            current_conn.close()
+        except:
+            pass
         continue
